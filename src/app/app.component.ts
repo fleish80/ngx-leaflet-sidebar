@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MapOptions, tileLayer, latLng } from 'leaflet';
+import { latLng, Layer, MapOptions, tileLayer, marker } from 'leaflet';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,8 @@ import { MapOptions, tileLayer, latLng } from 'leaflet';
 })
 export class AppComponent implements OnInit {
 
-  options: MapOptions
+  options: MapOptions;
+  layers: Layer[];
 
   ngOnInit() {
     this.options = {
@@ -18,6 +19,10 @@ export class AppComponent implements OnInit {
       zoom: 5,
       center: latLng(46.879966, -121.726909)
     };
+    this.layers = [
+      marker([ 46.879966, -121.726909 ])
+    ];
   }
+ 
   title = 'ngx-leaflet-sidebar';
 }
