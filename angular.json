@@ -25,7 +25,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "./node_modules/leaflet/dist/images"
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss",
@@ -130,6 +134,41 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-leaflet-sidebar-library": {
+      "root": "projects/ngx-leaflet-sidebar-library",
+      "sourceRoot": "projects/ngx-leaflet-sidebar-library/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-leaflet-sidebar-library/tsconfig.lib.json",
+            "project": "projects/ngx-leaflet-sidebar-library/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-leaflet-sidebar-library/src/test.ts",
+            "tsConfig": "projects/ngx-leaflet-sidebar-library/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-leaflet-sidebar-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-leaflet-sidebar-library/tsconfig.lib.json",
+              "projects/ngx-leaflet-sidebar-library/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

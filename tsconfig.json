@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-leaflet-sidebar-library": [
+        "dist/ngx-leaflet-sidebar-library"
+      ],
+      "ngx-leaflet-sidebar-library/*": [
+        "dist/ngx-leaflet-sidebar-library/*"
+      ]
+    }
   }
 }

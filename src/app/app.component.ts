@@ -8,6 +8,7 @@ import { latLng, Layer, MapOptions, tileLayer, marker } from 'leaflet';
 })
 export class AppComponent implements OnInit {
 
+  title = 'ngx-leaflet-sidebar';
   options: MapOptions;
   layers: Layer[];
 
@@ -20,9 +21,13 @@ export class AppComponent implements OnInit {
       center: latLng(46.879966, -121.726909)
     };
     this.layers = [
-      marker([ 46.879966, -121.726909 ])
+      marker([ 46.879966, -121.726909 ]).on('click', (event) => this.markerClick(event))
     ];
   }
+
+  markerClick(event) {
+    console.log('marker clicked', event);
+  }
  
-  title = 'ngx-leaflet-sidebar';
+ 
 }
